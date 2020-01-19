@@ -128,16 +128,36 @@ public class User implements Serializable {
         private LocalDate passwordExpirationDate;
         private int status;
 
-        public UserBuilder (String id, String name, String surname, String login, String password) {
-            this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.login = login;
-            this.password = password;
+        public UserBuilder () {
             this.creationDate = LocalDate.now();
             this.modificationDate = LocalDate.now();
             this.passwordExpirationDate = creationDate.plusMonths(1);
             this.status = 1;
+        }
+
+        public UserBuilder setID(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public UserBuilder setName(String name){
+            this.name = name;
+            return this;
+        }
+
+        public UserBuilder setSurname(String surname){
+            this.surname = surname;
+            return this;
+        }
+
+        public UserBuilder setLogin(String login){
+            this.login = login;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password){
+            this.password = password;
+            return this;
         }
 
         public UserBuilder setAge(int age) {
@@ -158,5 +178,9 @@ public class User implements Serializable {
         public User build(){
             return new User(this);
         }
+    }
+
+    public static UserBuilder builder(){
+        return new UserBuilder();
     }
 }
