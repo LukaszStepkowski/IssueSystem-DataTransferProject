@@ -19,18 +19,18 @@ public class User implements Serializable {
     private int status;
 
     public User(UserBuilder builder) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.address = address;
-        this.city = city;
-        this.login = login;
-        this.password = password;
-        this.creationDate = creationDate;
-        this.modificationDate = modificationDate;
-        this.passwordExpirationDate = passwordExpirationDate;
-        this.status = status;
+        this.id = builder.id;
+        this.name = builder.name;
+        this.surname = builder.surname;
+        this.age = builder.age;
+        this.address = builder.address;
+        this.city = builder.city;
+        this.login = builder.login;
+        this.password = builder.password;
+        this.creationDate = builder.creationDate;
+        this.modificationDate = builder.modificationDate;
+        this.passwordExpirationDate = builder.passwordExpirationDate;
+        this.status = builder.status;
     }
 
     public String getId() {
