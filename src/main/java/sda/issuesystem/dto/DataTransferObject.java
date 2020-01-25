@@ -1,6 +1,8 @@
 package sda.issuesystem.dto;
 
-public class DataTransferObject<T> {
+import java.io.Serializable;
+
+public class DataTransferObject<T> implements Serializable {
 
     private final String processName;
     private final T object;
