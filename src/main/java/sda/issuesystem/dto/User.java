@@ -2,10 +2,13 @@ package sda.issuesystem.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class User implements Serializable {
 
-    private String id;
+    private AtomicInteger atomicInteger = new AtomicInteger(0);
+
+    private Integer id;
     private String name;
     private String surname;
     private int age;
@@ -19,7 +22,7 @@ public class User implements Serializable {
     private int status;
 
     public User(UserBuilder builder) {
-        this.id = builder.id;
+        this.id = atomicInteger.getAndIncrement();
         this.name = builder.name;
         this.surname = builder.surname;
         this.age = builder.age;
@@ -33,7 +36,7 @@ public class User implements Serializable {
         this.status = builder.status;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -115,7 +118,6 @@ public class User implements Serializable {
     }
 
     public static class UserBuilder {
-        private String id;
         private String name;
         private String surname;
         private int age;
@@ -135,22 +137,20 @@ public class User implements Serializable {
             this.status = 1;
         }
 
-        public UserBuilder setID(String id) {
-            this.id = id;
-            return this;
-        }
-
         public UserBuilder setName(String name){
+            System.out.println("Enter user surname:");
             this.name = name;
             return this;
         }
 
         public UserBuilder setSurname(String surname){
+            System.out.println("Enter user age:");
             this.surname = surname;
             return this;
         }
 
         public UserBuilder setLogin(String login){
+            System.out.println("Set password:");
             this.login = login;
             return this;
         }
@@ -161,16 +161,19 @@ public class User implements Serializable {
         }
 
         public UserBuilder setAge(int age) {
+            System.out.println("Enter user address:");
             this.age = age;
             return this;
         }
 
         public UserBuilder setAddress(String address){
+            System.out.println("Enter user city:");
             this.address = address;
             return this;
         }
 
         public UserBuilder setCity(String city) {
+            System.out.println("Enter user login");
             this.city = city;
             return this;
         }
